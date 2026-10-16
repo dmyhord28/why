@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08080a">
+<meta name="description" content="Nova Studios — modern websites, apps, AI solutions, and software for businesses.">
+<title>Nova Studios — digital products that make a difference</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{darkBg:'#08080a',darkCard:'#121216',neonRed:'#ff1a3c',rubyRed:'#dc2626',deepCrimson:'#880815'},fontFamily:{sans:['Outfit','sans-serif']}}}};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{color-scheme:dark;--bg:#08080a;--panel:#121216;--red:#ff1a3c;--muted:#aaa9b1}
+*{box-sizing:border-box}
+html{scroll-padding-top:100px}
+body{margin:0;background:var(--bg);color:#f6f5f7;font-family:Outfit,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+::selection{background:var(--red);color:#fff}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--red);border-radius:8px}
+.wrap{width:min(1200px,calc(100% - 48px));margin-inline:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#ff6b80;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow:before{content:"";width:24px;height:1px;background:var(--red)}
+.display{font-size:clamp(3.5rem,8.5vw,8.4rem);line-height:.92;letter-spacing:-.075em;font-weight:700}
+.section-title{font-size:clamp(2.5rem,5.2vw,5.3rem);line-height:.98;letter-spacing:-.065em;font-weight:650}
+.red-text{color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:999px;padding:15px 21px;font-weight:650;font-size:.92rem;transition:transform .25s,background .25s,border-color .25s;cursor:pointer}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:var(--red);color:#fff;box-shadow:0 0 35px #ff1a3c26}
+.btn-primary:hover{background:#ff3452}
+.btn-ghost{border:1px solid #ffffff2c;background:#ffffff08}
+.btn-ghost:hover{border-color:#ff1a3c99;background:#ff1a3c0c}
+.site-header{position:fixed;z-index:50;top:16px;left:0;width:100%;padding:0 24px;pointer-events:none}
+.nav{pointer-events:auto;width:min(1200px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 14px 12px 20px;border:1px solid #ffffff17;border-radius:18px;background:#101013d9;backdrop-filter:blur(20px)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.04em;font-size:1.15rem}
+.brand-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:12px;background:var(--red);font-size:1.05rem;box-shadow:0 0 25px #ff1a3c42}
+.nav-links{display:flex;align-items:center;gap:25px;color:#c8c6cc;font-size:.85rem}
+.nav-links a{transition:color .2s}.nav-links a:hover{color:white}
+.nav-cta{padding:11px 16px;font-size:.83rem}
+#mobile-menu-btn{display:none;background:#ffffff0a;border:1px solid #ffffff20;border-radius:12px;width:42px;height:42px;color:white}
+#mobile-menu{display:none}
+.hero{position:relative;min-height:830px;padding:190px 0 80px;overflow:hidden}
+.hero:before{content:"";position:absolute;width:740px;height:740px;right:-170px;top:70px;border-radius:50%;background:radial-gradient(circle,#ff1a3c1c 0%,#ff1a3c07 36%,transparent 68%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:55px;position:relative;z-index:1}
+.hero-copy .display{max-width:800px;margin:27px 0}
+.hero-copy .lead{max-width:550px;color:#b7b4bd;font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.75}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:48px;color:#a5a2ad;font-size:.8rem}
+.hero-meta strong{display:block;color:#fff;font-size:1.35rem;letter-spacing:-.04em;margin-bottom:2px}
+.hero-art{position:relative;min-height:480px;display:grid;place-items:center}
+.art-orbit{position:absolute;width:min(100%,480px);aspect-ratio:1;border:1px solid #ff1a3c25;border-radius:50%;animation:spin 35s linear infinite}
+.art-orbit:before,.art-orbit:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 24px var(--red)}
+.art-orbit:before{top:15%;left:13%}.art-orbit:after{bottom:13%;right:12%;width:6px;height:6px}
+.art-core{position:relative;width:min(82%,360px);aspect-ratio:.84;border-radius:28px;border:1px solid #ffffff1b;background:linear-gradient(145deg,#1c171b,#101014 65%);padding:24px;box-shadow:0 35px 90px #0009,0 0 70px #ff1a3c0d;transform:rotate(-4deg);animation:float 7s ease-in-out infinite}
+.art-top{display:flex;justify-content:space-between;align-items:center;color:#a8a3ae;font-size:.7rem}
+.art-top span:first-child{color:#fff;font-weight:700;letter-spacing:.08em}
+.art-monogram{height:230px;display:grid;place-items:center;font-size:clamp(7rem,15vw,11rem);font-weight:800;letter-spacing:-.14em;color:transparent;-webkit-text-stroke:2px #ff1a3c;filter:drop-shadow(0 0 30px #ff1a3c55)}
+.art-bottom{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #ffffff18;padding-top:15px}
+.art-bottom strong{font-size:1rem}.art-bottom small{display:block;color:#8f8a96;font-size:.68rem;margin-top:4px}
+.float-chip{position:absolute;z-index:2;padding:13px 16px;border:1px solid #ffffff1e;border-radius:15px;background:#171519e8;backdrop-filter:blur(15px);box-shadow:0 15px 40px #0005;font-size:.78rem;animation:float 6s ease-in-out infinite}
+.float-chip i{color:var(--red);margin-right:8px}.chip-one{left:-2%;top:18%}.chip-two{right:-3%;bottom:19%;animation-delay:-2s}
+.ticker{border-block:1px solid #ffffff13;overflow:hidden;padding:19px 0;background:#ffffff03}
+.ticker-track{display:flex;align-items:center;gap:35px;width:max-content;animation:marquee 32s linear infinite;color:#a8a5ae;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.ticker-track span{display:flex;align-items:center;gap:35px}.ticker-track b{color:var(--red);font-size:1.1rem}
+.section{padding:125px 0;position:relative}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:55px}
+.section-head p{max-width:390px;color:#aaa7b1;line-height:1.7;margin:0}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service-card{min-height:290px;padding:29px;border:1px solid #ffffff17;border-radius:22px;background:linear-gradient(145deg,#17171b,#0e0e11);position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.service-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-80px;bottom:-90px;background:#ff1a3c10;filter:blur(10px);transition:background .3s}
+.service-card:hover{transform:translateY(-6px);border-color:#ff1a3c66}.service-card:hover:after{background:#ff1a3c24}
+.service-num{font-size:.75rem;color:#77737e;letter-spacing:.12em}
+.service-icon{display:grid;place-items:center;width:48px;height:48px;border:1px solid #ff1a3c42;border-radius:15px;color:var(--red);font-size:1.15rem;margin:30px 0 22px;background:#ff1a3c0b}
+.service-card h3{font-size:1.35rem;letter-spacing:-.035em;margin:0 0 10px}.service-card p{font-size:.92rem;color:#a8a5af;line-height:1.65;margin:0;max-width:330px}
+.feature-band{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;border:1px solid #ffffff17;border-radius:28px;padding:clamp(28px,5vw,65px);background:radial-gradient(circle at 0% 100%,#ff1a3c13,transparent 45%),#101013}
+.feature-band .section-title{margin:20px 0}
+.feature-band p{color:#aaa7b1;line-height:1.8}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.feature-item{padding:19px;border:1px solid #ffffff14;border-radius:16px;background:#ffffff04}
+.feature-item i{color:var(--red);font-size:1.05rem;margin-bottom:17px}.feature-item strong{display:block;font-size:.95rem}.feature-item span{display:block;font-size:.78rem;color:#96929e;margin-top:6px;line-height:1.5}
+.projects-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.project-card{position:relative;min-height:310px;border:1px solid #ffffff17;border-radius:23px;overflow:hidden;background:#141216;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.project-card:first-child{grid-row:span 2;min-height:640px}
+.project-visual{position:absolute;inset:0;opacity:.9;pointer-events:none}
+.project-visual.dashboard{background:radial-gradient(ellipse at 50% 20%,#ff1a3c25,transparent 55%),linear-gradient(145deg,#20171d,#101014)}
+.project-visual.shop{background:radial-gradient(ellipse at 75% 10%,#ff1a3c20,transparent 55%),linear-gradient(145deg,#19161b,#0e0e12)}
+.project-visual.ai{background:radial-gradient(ellipse at 50% 30%,#ff1a3c25,transparent 50%),linear-gradient(145deg,#21151b,#0d0d10)}
+.project-ui{position:relative;z-index:1;border:1px solid #ffffff22;border-radius:17px;background:#0a0a0dd9;backdrop-filter:blur(8px);padding:18px;max-width:100%;margin:45px auto 25px;width:90%;box-shadow:0 20px 60px #0006}
+.ui-bar{display:flex;gap:5px;padding-bottom:15px;border-bottom:1px solid #ffffff17}.ui-bar i{width:6px;height:6px;border-radius:50%;background:#ff1a3c99}
+.ui-lines{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}.ui-lines span{height:56px;border-radius:8px;background:linear-gradient(135deg,#ff1a3c24,#ffffff06);border:1px solid #ffffff0c}
+.ui-chart{height:85px;margin-top:12px;border-radius:9px;background:linear-gradient(180deg,#ff1a3c20,transparent);border-bottom:1px solid #ff1a3c88;clip-path:polygon(0 75%,12% 55%,23% 65%,37% 28%,50% 44%,62% 20%,73% 35%,87% 10%,100% 20%,100% 100%,0 100%)}
+.project-info{position:relative;z-index:2}.project-info .tag{color:#ff7287;text-transform:uppercase;font-size:.7rem;letter-spacing:.14em;font-weight:700}.project-info h3{font-size:1.6rem;letter-spacing:-.04em;margin:8px 0}.project-info p{color:#aaa7b1;line-height:1.6;font-size:.88rem;max-width:460px;margin:0}
+.project-card .arrow{position:absolute;right:24px;bottom:24px;z-index:3;width:42px;height:42px;display:grid;place-items:center;border:1px solid #ffffff2c;border-radius:50%}
+.tech-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.tech{border:1px solid #ffffff16;border-radius:14px;background:#ffffff04;padding:20px 10px;text-align:center;color:#c2bec8;font-size:.83rem;transition:border-color .2s,transform .2s}
+.tech:hover{border-color:#ff1a3c66;transform:translateY(-3px)}.tech i{display:block;font-size:1.3rem;color:var(--red);margin-bottom:12px}
+.calc-wrap{display:grid;grid-template-columns:1fr .8fr;gap:20px}
+.calc-panel,.calc-result{border:1px solid #ffffff17;border-radius:23px;background:#121216;padding:clamp(23px,4vw,40px)}
+.field-label{display:block;color:#b7b3be;font-size:.86rem;margin:0 0 12px}
+.calc-panel select,.calc-panel input[type=number]{width:100%;background:#0b0b0e;border:1px solid #ffffff22;border-radius:12px;padding:14px;color:#fff;outline:none}
+.calc-panel select:focus,.calc-panel input:focus{border-color:var(--red)}
+.calc-panel input[type=range]{width:100%;accent-color:var(--red)}
+.calc-row{margin-bottom:26px}.range-labels{display:flex;justify-content:space-between;color:#8e8a96;font-size:.75rem;margin-top:7px}
+.calc-result{display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 100% 0%,#ff1a3c1c,transparent 50%),#121216}
+.calc-price{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;letter-spacing:-.07em;margin:20px 0 5px}
+.calc-result p{color:#aaa7b1;line-height:1.65;font-size:.9rem}
+.calc-note{font-size:.74rem;color:#77737e;margin-top:22px}
+.faq-list{border-top:1px solid #ffffff20}
+.faq-item{border-bottom:1px solid #ffffff20}
+.faq-question{display:flex;align-items:center;justify-content:space-between;gap:24px;width:100%;background:transparent;color:#f5f4f7;text-align:left;padding:24px 0;border:0;cursor:pointer;font-size:1.08rem;font-weight:600}
+.faq-question i{color:var(--red);transition:transform .25s}.faq-question[aria-expanded=true] i{transform:rotate(45deg)}
+.faq-answer{color:#aaa7b1;line-height:1.75;padding:0 40px 24px 0;max-width:780px}.faq-answer[hidden]{display:none}
+.contact-panel{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;padding:clamp(28px,5vw,62px);border:1px solid #ffffff19;border-radius:28px;background:radial-gradient(circle at 0 100%,#ff1a3c12,transparent 42%),#111114}
+.contact-panel p{color:#aaa7b1;line-height:1.75}.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.contact-form label{display:block;color:#bdb9c3;font-size:.78rem;margin-bottom:8px}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;border:1px solid #ffffff20;border-radius:12px;background:#09090c;color:#fff;padding:13px 14px;outline:none}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:#ff1a3c99}
+.contact-form .full{grid-column:1/-1}.contact-form textarea{resize:vertical;min-height:115px}
+footer{padding:36px 0 42px;border-top:1px solid #ffffff14;color:#8e8a95;font-size:.8rem}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer-links{display:flex;gap:18px}.footer-links a:hover{color:white}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+#cursor-follower{position:fixed;z-index:100;pointer-events:none;width:22px;height:22px;border:1px solid #ff1a3c;background:#ff1a3c20;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 18px #ff1a3c55;display:none}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media(min-width:1100px) and (pointer:fine){#cursor-follower{display:block}}
+@media(max-width:900px){
+ .hero-grid{grid-template-columns:1fr;gap:35px}.hero{min-height:auto;padding-top:160px}.hero-art{min-height:420px;max-width:620px;width:100%;margin:auto}
+ .section{padding:90px 0}.section-head{display:block}.section-head p{margin-top:22px}
+ .services-grid{grid-template-columns:repeat(2,1fr)}.feature-band{grid-template-columns:1fr;gap:35px}.projects-grid{grid-template-columns:1fr 1fr}.project-card:first-child{grid-row:auto;min-height:420px;grid-column:1/-1}
+ .tech-grid{grid-template-columns:repeat(3,1fr)}.calc-wrap{grid-template-columns:1fr}.contact-panel{grid-template-columns:1fr;gap:28px}
+ .nav-links{gap:15px}
+}
+@media(max-width:680px){
+ .wrap{width:min(100% - 32px,1200px)}.site-header{top:8px;padding:0 10px}.nav{padding:9px 10px;border-radius:15px;gap:8px}.brand{font-size:1rem;gap:8px}.brand-mark{width:34px;height:34px;border-radius:11px}
+ .nav-links,.nav-cta{display:none}#mobile-menu-btn{display:block;flex-shrink:0}
+ #mobile-menu{display:none;pointer-events:auto;position:absolute;top:calc(100% + 8px);left:10px;right:10px;background:#111114f5;border:1px solid #ffffff20;border-radius:16px;padding:10px;backdrop-filter:blur(20px);max-height:calc(100dvh - 85px);overflow:auto}
+ #mobile-menu.open{display:block}#mobile-menu a{display:block;padding:13px 12px;border-radius:10px;color:#d0cdd5;font-size:.9rem}#mobile-menu a:hover{background:#ffffff0a;color:white}#mobile-menu .btn{margin-top:7px;width:100%}
+ .hero{padding:130px 0 60px}.hero-grid{gap:18px}.display{font-size:clamp(3.3rem,16vw,5.6rem)}.hero-copy .display{margin:23px 0}.hero-copy .lead{font-size:1rem;line-height:1.65}
+ .hero-actions{gap:9px}.btn{padding:13px 16px;font-size:.84rem}.hero-meta{gap:22px;margin-top:34px}.hero-meta strong{font-size:1.15rem}
+ .hero-art{min-height:350px;margin-top:5px}.art-orbit{width:320px;max-width:92%}.art-core{width:245px;padding:17px;border-radius:21px}.art-monogram{height:185px;font-size:7rem}.chip-one{left:0;top:14%}.chip-two{right:0;bottom:12%}.float-chip{font-size:.7rem;padding:10px 12px}
+ .ticker{padding:15px 0}.ticker-track{font-size:.68rem;gap:23px}.ticker-track span{gap:23px}
+ .section{padding:75px 0}.section-title{font-size:clamp(2.55rem,12vw,4rem)}.section-head{margin-bottom:32px}
+ .services-grid{grid-template-columns:1fr;gap:10px}.service-card{min-height:245px;padding:24px}.service-icon{margin:24px 0 18px}
+ .feature-band{padding:25px 20px;border-radius:22px}.feature-list{grid-template-columns:1fr 1fr;gap:8px}.feature-item{padding:14px}.feature-item strong{font-size:.84rem}.feature-item span{font-size:.73rem}
+ .projects-grid{grid-template-columns:1fr;gap:11px}.project-card,.project-card:first-child{grid-column:auto;min-height:330px;padding:20px}.project-ui{margin:38px auto 20px;width:94%;padding:13px}.ui-lines span{height:40px}
+ .tech-grid{grid-template-columns:repeat(2,1fr);gap:8px}.tech{padding:17px 8px;font-size:.78rem}
+ .calc-panel,.calc-result{padding:23px 19px;border-radius:19px}.calc-price{font-size:3rem}
+ .faq-question{font-size:1rem;padding:21px 0;gap:15px}.faq-answer{padding-right:12px;font-size:.9rem}
+ .contact-panel{padding:25px 19px;border-radius:22px}.contact-form{grid-template-columns:1fr}.contact-form .full{grid-column:auto}
+ .footer-row{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}
+}
+@media(max-width:360px){.brand{font-size:.9rem}.brand-mark{width:31px;height:31px}.hero-actions .btn{width:100%}.feature-list{grid-template-columns:1fr}.art-core{width:220px}.art-monogram{height:160px}.float-chip{font-size:.64rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}#cursor-follower{display:none!important}}
+
+.theme-toggle{display:grid;place-items:center;flex-shrink:0;width:42px;height:42px;border-radius:12px;border:1px solid #ffffff20;background:#ffffff08;color:#fff;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.theme-toggle:hover{border-color:#ff1a3c99;background:#ff1a3c12}
+body.day-mode{--bg:#f5f5f7;--panel:#ffffff;--muted:#55535d;background:var(--bg);color:#17171c;color-scheme:light}
+body.day-mode .site-header .nav{background:#ffffffdf;border-color:#17171c18;box-shadow:0 8px 30px #17171c0b}
+body.day-mode .nav-links{color:#55535d}
+body.day-mode .nav-links a:hover{color:#17171c}
+body.day-mode #mobile-menu{background:#fffF;border-color:#17171c20}
+body.day-mode #mobile-menu a{color:#44414b}
+body.day-mode #mobile-menu a:hover{background:#17171c08;color:#17171c}
+body.day-mode #mobile-menu-btn,body.day-mode .theme-toggle{color:#26242b;background:#ffffffb8;border-color:#17171c20}
+body.day-mode .hero:before{background:radial-gradient(circle,#ff1a3c14 0%,#ff1a3c04 36%,transparent 68%)}
+body.day-mode .hero-copy .lead,body.day-mode .section-head p,body.day-mode .service-card p,body.day-mode .feature-band p,body.day-mode .project-info p,body.day-mode .calc-result p,body.day-mode .faq-answer,body.day-mode .contact-panel p{color:#625f69}
+body.day-mode .hero-meta{color:#625f69}
+body.day-mode .hero-meta strong{color:#17171c}
+body.day-mode .art-orbit{border-color:#ff1a3c35}
+body.day-mode .art-core{background:linear-gradient(145deg,#fff,#f0edf1 65%);border-color:#17171c17;box-shadow:0 35px 90px #29202b12,0 0 70px #ff1a3c0b}
+body.day-mode .art-top{color:#77717e}
+body.day-mode .art-top span:first-child,body.day-mode .art-bottom strong{color:#17171c}
+body.day-mode .art-bottom{border-color:#17171c18}
+body.day-mode .art-bottom small{color:#77717e}
+body.day-mode .float-chip{background:#ffffffed;border-color:#17171c16;color:#28252d;box-shadow:0 15px 40px #00000010}
+body.day-mode .ticker{background:#ffffff80;border-color:#17171c12}
+body.day-mode .ticker-track{color:#6c6872}
+body.day-mode .service-card{background:linear-gradient(145deg,#fff,#f0eff2);border-color:#17171c15;box-shadow:0 10px 30px #17171c05}
+body.day-mode .service-num{color:#85818b}
+body.day-mode .service-card h3{color:#17171c}
+body.day-mode .service-card:after{background:#ff1a3c09}
+body.day-mode .feature-band{background:radial-gradient(circle at 0% 100%,#ff1a3c0d,transparent 45%),#fff;border-color:#17171c14;box-shadow:0 16px 45px #17171c06}
+body.day-mode .feature-item{background:#f8f7f9;border-color:#17171c10}
+body.day-mode .feature-item strong{color:#222027}
+body.day-mode .feature-item span{color:#716d78}
+body.day-mode .project-card{background:#f1eff3;border-color:#17171c15}
+body.day-mode .project-visual.dashboard{background:radial-gradient(ellipse at 50% 20%,#ff1a3c1a,transparent 55%),linear-gradient(145deg,#f2eaf0,#f9f8fa)}
+body.day-mode .project-visual.shop{background:radial-gradient(ellipse at 75% 10%,#ff1a3c17,transparent 55%),linear-gradient(145deg,#f2edf1,#f9f8fa)}
+body.day-mode .project-visual.ai{background:radial-gradient(ellipse at 50% 30%,#ff1a3c1c,transparent 50%),linear-gradient(145deg,#f4eaf0,#f9f8fa)}
+body.day-mode .project-ui{background:#ffffffed;border-color:#17171c16;box-shadow:0 20px 60px #0000000c}
+body.day-mode .project-ui .ui-bar{border-color:#17171c12}
+body.day-mode .project-ui div[style*="color:#b8b2bd"]{color:#6c6872!important}
+body.day-mode .tech{background:#fff;border-color:#17171c12;color:#4e4a55}
+body.day-mode .calc-panel,body.day-mode .calc-result{background:#fff;border-color:#17171c15;box-shadow:0 12px 35px #17171c06}
+body.day-mode .calc-panel select,body.day-mode .calc-panel input[type=number]{background:#faf9fb;color:#17171c;border-color:#17171c20}
+body.day-mode .field-label{color:#5f5b66}
+body.day-mode .range-labels{color:#77727d}
+body.day-mode .calc-note{color:#77727d}
+body.day-mode .faq-list,body.day-mode .faq-item{border-color:#17171c18}
+body.day-mode .faq-question{color:#222027}
+body.day-mode .contact-panel{background:radial-gradient(circle at 0 100%,#ff1a3c0b,transparent 42%),#fff;border-color:#17171c15;box-shadow:0 12px 35px #17171c06}
+body.day-mode .contact-form label{color:#5c5863}
+body.day-mode .contact-form input,body.day-mode .contact-form select,body.day-mode .contact-form textarea{background:#faf9fb;color:#17171c;border-color:#17171c20}
+body.day-mode .contact-form input::placeholder,body.day-mode .contact-form textarea::placeholder{color:#97929d}
+body.day-mode footer{border-color:#17171c15;color:#77727d}
+body.day-mode .footer-links a:hover{color:#17171c}
+body.day-mode .ui-lines span{background:linear-gradient(135deg,#ff1a3c18,#17171c03);border-color:#17171c0c}
+body.day-mode .ui-chart{background:linear-gradient(180deg,#ff1a3c16,transparent);border-color:#ff1a3c66}
+body.day-mode .project-card .arrow{border-color:#17171c24;color:#27232b}
+@media(max-width:680px){.theme-toggle{width:40px;height:40px}}
+
+</style>
+</head>
+<body>
+<div id="cursor-follower" aria-hidden="true"></div>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="Nova Studios — home"><span class="brand-mark"><i class="fa-solid fa-n"></i></span><span>NOVA <span class="red-text">STUDIOS</span></span></a>
+    <div class="nav-links"><a href="#uslugi">Services</a><a href="#podejscie">How we work</a><a href="#projekty">Projects</a><a href="#kalkulator">Pricing</a><a href="#faq">FAQ</a></div>
+    <a class="btn btn-primary nav-cta" href="#kontakt">Let's talk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"><i class="fa-solid fa-sun"></i></button>
+    <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <div id="mobile-menu"><a href="#uslugi">Services</a><a href="#podejscie">How we work</a><a href="#projekty">Projects</a><a href="#technologie">Technologies</a><a href="#kalkulator">Project cost calculator</a><a href="#faq">FAQ</a><a href="#kontakt">Contact</a><a class="btn btn-primary" href="#kontakt">Let's talk <i class="fa-solid fa-arrow-right"></i></a></div>
+  </nav>
+</header>
+<main>
+<section id="top" class="hero">
+ <div class="wrap hero-grid">
+  <div class="hero-copy reveal">
+   <span class="eyebrow">Digital product studio</span>
+   <h1 class="display">Ideas.<br>Technology.<br><span class="red-text">Impact.</span></h1>
+   <p class="lead">We design and build modern websites, apps, and IT solutions that help businesses grow faster.</p>
+   <div class="hero-actions"><a class="btn btn-primary" href="#kontakt">Tell us about your project <i class="fa-solid fa-arrow-right"></i></a><a class="btn btn-ghost" href="#uslugi">Explore our services</a></div>
+   <div class="hero-meta"><div><strong>01<span class="red-text">.</span></strong>One team</div><div><strong>360°</strong>From idea to launch</div><div><strong>AI<span class="red-text">+</span></strong>Modern solutions</div></div>
+  </div>
+  <div class="hero-art reveal" aria-label="Graficzna wizualizacja Nova Studios">
+   <div class="art-orbit"></div><div class="float-chip chip-one"><i class="fa-solid fa-bolt"></i> Fast delivery</div>
+   <div class="art-core"><div class="art-top"><span>NOVA / DIGITAL LAB</span><span>● ONLINE</span></div><div class="art-monogram">N<span style="color:#f7f5f8;-webkit-text-stroke:0">.</span></div><div class="art-bottom"><div><strong>Build what’s next.</strong><small>Design · Code · Intelligence</small></div><i class="fa-solid fa-arrow-up-right-from-square red-text"></i></div></div>
+   <div class="float-chip chip-two"><i class="fa-solid fa-wand-magic-sparkles"></i> Design + technology</div>
+  </div>
+ </div>
+</section>
+<div class="ticker" aria-label="Zakres usług"><div class="ticker-track"><span>WEBSITES <b>✳</b> APPS <b>✳</b> AI AUTOMATION <b>✳</b> E-COMMERCE <b>✳</b> UX / UI <b>✳</b> SOFTWARE <b>✳</b></span><span>WEBSITES <b>✳</b> APPS <b>✳</b> AI AUTOMATION <b>✳</b> E-COMMERCE <b>✳</b> UX / UI <b>✳</b> SOFTWARE <b>✳</b></span></div></div>
+
+<section id="uslugi" class="section">
+ <div class="wrap">
+  <div class="section-head reveal"><div><span class="eyebrow">What we can create</span><h2 class="section-title" style="margin:20px 0 0">Technology that<br><span class="red-text">works for you.</span></h2></div><p>We combine thoughtful design with robust development. From a single website to a complex digital product, we choose the right solution for your business goals.</p></div>
+  <div class="services-grid">
+   <article class="service-card reveal"><span class="service-num">01 / WEB</span><div class="service-icon"><i class="fa-solid fa-window-maximize"></i></div><h3>Websites</h3><p>Modern business websites and landing pages that communicate your brand’s value and turn visitors into customers.</p></article>
+   <article class="service-card reveal"><span class="service-num">02 / PRODUCT</span><div class="service-icon"><i class="fa-solid fa-layer-group"></i></div><h3>Apps and platforms</h3><p>Intuitive web apps, client portals, dashboards, and tools tailored to real user needs.</p></article>
+   <article class="service-card reveal"><span class="service-num">03 / AI</span><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>AI and automation</h3><p>AI assistants, integrations, and automations that reduce repetitive tasks and streamline everyday work.</p></article>
+   <article class="service-card reveal"><span class="service-num">04 / COMMERCE</span><div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div><h3>Online stores</h3><p>Thoughtful e-commerce experiences with smooth shopping journeys, compelling product displays, and room to grow.</p></article>
+   <article class="service-card reveal"><span class="service-num">05 / ENGINEERING</span><div class="service-icon"><i class="fa-solid fa-code"></i></div><h3>Custom software</h3><p>Custom systems and integrations that streamline processes and connect the tools your business relies on.</p></article>
+   <article class="service-card reveal"><span class="service-num">06 / EXPERIENCE</span><div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div><h3>UX/UI and redesign</h3><p>UX design, wireframes, and product refreshes that make digital experiences clearer, more consistent, and easier to use.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="podejscie" class="section" style="padding-top:20px">
+ <div class="wrap"><div class="feature-band reveal">
+  <div><span class="eyebrow">Our approach</span><h2 class="section-title">Less friction.<br><span class="red-text">More impact.</span></h2><p>We don’t build technology for technology’s sake. We start with your goals, align on priorities, then design and build a solution that works in the real world.</p><a class="btn btn-primary" href="#kontakt" style="margin-top:14px">Let's talk about your goals <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="feature-list">
+   <div class="feature-item"><i class="fa-solid fa-compass"></i><strong>Strategy and planning</strong><span>A clear scope, priorities, and roadmap.</span></div>
+   <div class="feature-item"><i class="fa-solid fa-pen-ruler"></i><strong>Purposeful design</strong><span>Clear interfaces and a consistent visual language.</span></div>
+   <div class="feature-item"><i class="fa-solid fa-code"></i><strong>Reliable development</strong><span>Responsive code and solutions built to scale.</span></div>
+   <div class="feature-item"><i class="fa-solid fa-rocket"></i><strong>Launch and iteration</strong><span>Testing, refinements, and ongoing improvements.</span></div>
+  </div>
+ </div></div>
+</section>
+
+<section id="projekty" class="section">
+ <div class="wrap">
+  <div class="section-head reveal"><div><span class="eyebrow">Possibilities in practice</span><h2 class="section-title" style="margin:20px 0 0">Digital products.<br><span class="red-text">Real-world applications.</span></h2></div><p>Example project concepts. You can replace these with your own work, screenshots, and case studies later.</p></div>
+  <div class="projects-grid">
+   <article class="project-card reveal"><div class="project-visual dashboard"></div><div class="project-ui"><div class="ui-bar"><i></i><i></i><i></i></div><div style="font-size:.72rem;color:#b8b2bd;margin-top:15px">OVERVIEW / PERFORMANCE</div><div class="ui-lines"><span></span><span></span><span></span></div><div class="ui-chart"></div><div class="ui-lines"><span style="height:28px"></span><span style="height:28px"></span><span style="height:28px"></span></div></div><div class="project-info"><span class="tag">01 / Dashboard</span><h3>Analytics dashboard</h3><p>Clear reports, data visualisation, and simple user management.</p></div><span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></article>
+   <article class="project-card reveal"><div class="project-visual shop"></div><div class="project-ui"><div class="ui-bar"><i></i><i></i><i></i></div><div class="ui-lines"><span style="height:85px"></span><span style="height:85px"></span><span style="height:85px"></span></div><div style="height:9px;width:55%;background:#ff1a3c88;border-radius:8px;margin-top:14px"></div></div><div class="project-info"><span class="tag">02 / E-commerce</span><h3>E-commerce store</h3><p>Modern product presentation and a smooth shopping experience.</p></div><span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></article>
+   <article class="project-card reveal"><div class="project-visual ai"></div><div class="project-ui"><div class="ui-bar"><i></i><i></i><i></i></div><div style="display:flex;gap:10px;align-items:center;margin-top:18px"><div style="width:35px;height:35px;background:#ff1a3c24;border:1px solid #ff1a3c77;border-radius:12px;display:grid;place-items:center;color:#ff526c"><i class="fa-solid fa-sparkles"></i></div><div style="height:8px;width:65%;background:#ffffff20;border-radius:8px"></div></div><div style="height:42px;margin-top:13px;border-radius:8px;background:#ffffff09;border:1px solid #ffffff10"></div></div><div class="project-info"><span class="tag">03 / Automatyzacja</span><h3>AI assistant</h3><p>User support and automation for repetitive tasks.</p></div><span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></article>
+  </div>
+ </div>
+</section>
+
+<section id="technologie" class="section" style="padding-top:20px">
+ <div class="wrap"><div class="section-head reveal"><div><span class="eyebrow">Tools and technologies</span><h2 class="section-title" style="margin:20px 0 0">The right tech stack<br><span class="red-text">for the job.</span></h2></div><p>We choose technologies based on project requirements, performance, security, and long-term maintainability.</p></div>
+  <div class="tech-grid reveal"><div class="tech"><i class="fa-brands fa-html5"></i>HTML5</div><div class="tech"><i class="fa-brands fa-css3-alt"></i>CSS / Tailwind</div><div class="tech"><i class="fa-brands fa-js"></i>JavaScript</div><div class="tech"><i class="fa-brands fa-react"></i>React</div><div class="tech"><i class="fa-brands fa-node-js"></i>Node.js</div><div class="tech"><i class="fa-solid fa-brain"></i>AI / API</div></div>
+ </div>
+</section>
+
+<section id="kalkulator" class="section">
+ <div class="wrap">
+  <div class="section-head reveal"><div><span class="eyebrow">Let’s start with an estimated budget</span><h2 class="section-title" style="margin:20px 0 0">Let’s estimate<br><span class="red-text">your project.</span></h2></div><p>This calculator provides an initial estimate only. The final price depends on features, integrations, and project details.</p></div>
+  <div class="calc-wrap reveal">
+   <div class="calc-panel">
+    <div class="calc-row"><label class="field-label" for="project-type">What would you like to build?</label><select id="project-type"><option value="1800">Landing page</option><option value="3500">Business website</option><option value="6500">E-commerce store</option><option value="8500">Web application</option><option value="5000">Automation / AI</option></select></div>
+    <div class="calc-row"><label class="field-label" for="pages-range">Number of pages: <strong id="pages-value" class="text-white">5</strong></label><input id="pages-range" type="range" min="1" max="20" value="5"><div class="range-labels"><span>1 page</span><span>20 pages</span></div></div>
+    <div class="calc-row"><label class="field-label" for="complexity">Project complexity</label><select id="complexity"><option value="1">Basic</option><option value="1.35">Intermediate</option><option value="1.8">Advanced</option></select></div>
+    <div class="calc-row" style="margin-bottom:0"><label class="field-label" for="integrations">Additional integrations</label><select id="integrations"><option value="0">None</option><option value="500">1–2 integrations</option><option value="1500">Several integrations / API</option><option value="3000">Advanced integrations</option></select></div>
+   </div>
+   <div class="calc-result"><div><span class="eyebrow">Estimated budget</span><div id="calc-price" class="calc-price">2,400 PLN</div><p>This is an indicative estimate to start the conversation. Once we understand your needs, we’ll prepare a tailored proposal and delivery plan.</p><div style="display:flex;align-items:center;gap:10px;color:#bdb8c2;font-size:.84rem;margin-top:20px"><i class="fa-solid fa-circle-check red-text"></i> No obligation</div><div style="display:flex;align-items:center;gap:10px;color:#bdb8c2;font-size:.84rem;margin-top:10px"><i class="fa-solid fa-circle-check red-text"></i> A scope tailored to your needs</div></div><div><a id="calc-contact" class="btn btn-primary" href="#kontakt" style="width:100%;margin-top:28px">Let's discuss your project <i class="fa-solid fa-arrow-right"></i></a><div class="calc-note">Pricing orientacyjna, nie jest ofertą handlową.</div></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="faq" class="section" style="padding-top:20px">
+ <div class="wrap" style="max-width:900px"><div class="section-head reveal"><div><span class="eyebrow">FAQ</span><h2 class="section-title" style="margin:20px 0 0">Good questions.<br><span class="red-text">Clear answers.</span></h2></div><p>Have another question? Get in touch — we’ll discuss your idea and possible solutions.</p></div>
+  <div class="faq-list reveal">
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">What does working together look like? <i class="fa-solid fa-plus"></i></button><div class="faq-answer" hidden>We start with a conversation about your goals and needs. Then we agree on scope, priorities, and timing before moving through design, development, testing, and launch.</div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">How long does it take to build a website or app? <i class="fa-solid fa-plus"></i></button><div class="faq-answer" hidden>It depends on the scope. A simple website can be delivered much faster than a complex store or an app with integrations. After a short brief, we’ll define a realistic timeline.</div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">Will the website work on mobile? <i class="fa-solid fa-plus"></i></button><div class="faq-answer" hidden>Yes — responsive design is part of our process. We optimise for desktops, tablets, and phones, with a focus on speed, readability, and ease of use.</div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">Can the project be expanded later? <i class="fa-solid fa-plus"></i></button><div class="faq-answer" hidden>Absolutely. We choose solutions with future growth in mind, and additional features or integrations can be introduced in stages.</div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">How does pricing work? <i class="fa-solid fa-plus"></i></button><div class="faq-answer" hidden>Pricing depends on features, complexity, integrations, and content. The calculator above helps estimate a budget; we prepare a final quote after learning the project details.</div></div>
+  </div>
+ </div>
+</section>
+
+<section id="kontakt" class="section">
+ <div class="wrap"><div class="contact-panel reveal">
+  <div><span class="eyebrow">The next step</span><h2 class="section-title" style="margin:20px 0">Have an idea?<br><span class="red-text">Let’s build it.</span></h2><p>Tell us what you need in a few sentences. We’ll prepare a project enquiry in your default email app.</p><p style="font-size:.82rem"><i class="fa-solid fa-circle-info red-text" style="margin-right:8px"></i>Update the email address in the site code before publishing.</p><div style="display:flex;gap:12px;align-items:center;color:#d0ccd5;font-size:.86rem;margin-top:28px"><i class="fa-regular fa-clock red-text"></i> The first step is a short conversation</div></div>
+  <form id="contact-form" class="contact-form">
+   <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" placeholder="What should we call you?"></div>
+   <div><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required></div>
+   <div class="full"><label for="kind">Project type</label><select id="kind" name="kind"><option>Website</option><option>Web application</option><option>E-commerce store</option><option>AI i automatyzacja</option><option>Custom software</option><option>UX/UI and redesign</option><option>Other project</option></select></div>
+   <div class="full"><label for="message">Tell us about your idea *</label><textarea id="message" name="message" placeholder="What do you want to achieve? What features do you need?" required></textarea></div>
+   <div class="full"><button class="btn btn-primary" type="submit" style="width:100%">Prepare email <i class="fa-solid fa-arrow-right"></i></button><p style="font-size:.72rem;margin:12px 0 0">This form does not send data to a server — it opens your email app.</p></div>
+  </form>
+ </div></div>
+</section>
+</main>
+<footer><div class="wrap footer-row"><a class="brand" href="#top"><span class="brand-mark"><i class="fa-solid fa-n"></i></span><span>NOVA <span class="red-text">STUDIOS</span></span></a><span>© <span id="year"></span> Nova Studios. All rights reserved.</span><div class="footer-links"><a href="#uslugi">Services</a><a href="#faq">FAQ</a><a href="#kontakt">Contact</a></div></div></footer>
+<script>
+(() => {
+
+ const themeToggle=document.getElementById('theme-toggle');
+ function applyTheme(theme){
+   const isDay=theme==='day';
+   document.body.classList.toggle('day-mode',isDay);
+   themeToggle.innerHTML=isDay?'<i class="fa-solid fa-moon"></i>':'<i class="fa-solid fa-sun"></i>';
+   const label=isDay?'Switch to night mode':'Switch to day mode';
+   themeToggle.setAttribute('aria-label',label);
+   themeToggle.setAttribute('title',label);
+ }
+ let savedTheme='night';
+ try{savedTheme=localStorage.getItem('nova-studios-theme')||'night';}catch(e){}
+ applyTheme(savedTheme);
+ themeToggle.addEventListener('click',()=>{
+   const next=document.body.classList.contains('day-mode')?'night':'day';
+   applyTheme(next);
+   try{localStorage.setItem('nova-studios-theme',next);}catch(e){}
+ });
+
+ const menuBtn=document.getElementById('mobile-menu-btn');
+ const menu=document.getElementById('mobile-menu');
+ menuBtn.addEventListener('click',()=>{const open=menu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';});
+ menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.innerHTML='<i class="fa-solid fa-bars"></i>';}));
+ const revealEls=document.querySelectorAll('.reveal');
+ if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});revealEls.forEach(el=>observer.observe(el));}else revealEls.forEach(el=>el.classList.add('visible'));
+ document.querySelectorAll('.faq-question').forEach(btn=>btn.addEventListener('click',()=>{const expanded=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!expanded));btn.nextElementSibling.hidden=expanded;}));
+ const type=document.getElementById('project-type'),pages=document.getElementById('pages-range'),pagesValue=document.getElementById('pages-value'),complexity=document.getElementById('complexity'),integrations=document.getElementById('integrations'),price=document.getElementById('calc-price'),calcContact=document.getElementById('calc-contact');
+ function calculate(){const base=Number(type.value),pageCount=Number(pages.value),factor=Number(complexity.value),extra=Number(integrations.value);const total=Math.round((base+Math.max(0,pageCount-1)*220+extra)*factor/100)*100;price.textContent=total.toLocaleString('en-GB')+' PLN';pagesValue.textContent=pageCount;calcContact.href='#kontakt';calcContact.dataset.estimate=price.textContent;}
+ [type,pages,complexity,integrations].forEach(el=>el.addEventListener('input',calculate));calculate();
+ document.getElementById('contact-form').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim();const email=document.getElementById('email').value.trim();const kind=document.getElementById('kind').value;const message=document.getElementById('message').value.trim();const estimate=calcContact.dataset.estimate||'';const subject=encodeURIComponent('Project enquiry — Nova Studios');const body=encodeURIComponent('Name: '+name+'\nE-mail: '+email+'\nProject type: '+kind+'\nEstimated budget z kalkulatora: '+estimate+'\n\nProject description:\n'+message);window.location.href='mailto:kontakt@twojadomena.pl?subject='+subject+'&body='+body;});
+ document.getElementById('year').textContent=new Date().getFullYear();
+ const cursor=document.getElementById('cursor-follower');if(window.matchMedia('(pointer:fine) and (min-width:1100px)').matches){window.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';},{passive:true});}
+})();
+</script>
+</body>
+</html>
